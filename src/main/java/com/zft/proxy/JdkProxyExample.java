@@ -3,7 +3,13 @@ package com.zft.proxy;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-
+/**
+ * Description: JDK动态代理
+ * @author  fengtan.zhang
+ * @date    2019/3/29 0029 下午 1:35
+ * @email   fengtan_zhang@sina.com
+ * @version 1.0
+ */
 public class JdkProxyExample implements InvocationHandler{
 
     //真实对象
