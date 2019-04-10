@@ -4,6 +4,18 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+    <!--使用property子元素将数据库连接的相关配置进行改写-->
+    <!--<properties>-->
+        <!--<property name="database.driver" value="com.mysql.jdbc.Driver" />-->
+        <!--<property name="database.url" value="jdbc:mysql://10.101.44.162:3306/geek" />-->
+        <!--<property name="database.username" value="root" />-->
+        <!--<property name="database.password" value="root" />-->
+    <!--</properties>-->
+
+    <!--使用属性文件-->
+    <properties resource="jdbc.properties" />
+
+
     <!-- 别名,也可以用注解-->
     <typeAliases>
         <!--<typeAlias type="com.zft.mybatis.vo.Role" alias="role" />-->
@@ -19,10 +31,10 @@
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://10.101.44.162:3306/geek"/>
-                <property name="username" value="root"/>
-                <property name="password" value="root"/>
+                <property name="driver" value="${database.driver}"/>
+                <property name="url" value="${database.url}"/>
+                <property name="username" value="${database.username}"/>
+                <property name="password" value="${database.password}"/>
             </dataSource>
         </environment>
     </environments>
