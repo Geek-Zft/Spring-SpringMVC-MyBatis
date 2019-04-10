@@ -1,6 +1,9 @@
 package com.zft.mybatis.mapper;
 
 import com.zft.mybatis.vo.Role;
+
+import java.util.List;
+
 /**
  * Description: 映射器接口
  * @author  fengtan.zhang
@@ -11,4 +14,12 @@ import com.zft.mybatis.vo.Role;
 public interface RoleMapper {
 
     Role getRole(Long id);
+
+    int insertRole(Role role);
+
+    int deleteRole(Long id);
+
+    int updateRole(Long id);
+
+    List<Role> getList(String roleName);
 }

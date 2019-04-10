@@ -29,7 +29,7 @@
 
     <!-- 映射文件 -->
     <mappers>
-        <mapper resource="RoleMapper.xml"/>
+        <mapper resource="./mapper/RoleMapper.xml"/>
     </mappers>
 
 </configuration>    
