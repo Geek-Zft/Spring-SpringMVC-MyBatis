@@ -22,4 +22,10 @@ public interface RoleMapper {
     int updateRole(Long id);
 
     List<Role> getList(String roleName);
+
+    List<Role> findRoles(String roleName);
+
+    List<Role> findRoles2(String note);
+
+
 }

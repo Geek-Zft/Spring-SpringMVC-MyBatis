@@ -25,6 +25,13 @@
         <package name="com.zft.mybatis.vo" />
     </typeAliases>
 
+    <!--配置typeHandler-->
+    <typeHandlers>
+        <!--<typeHandler jdbcType="VARCHAR" javaType="string" handler="com.zft.mybatis.typeHandler.MyTypeHandler" />-->
+        <!--扫描方式配置 通过注解指定javaType和jdbcType-->
+        <package name="com.zft.mybatis.typeHandler" />
+    </typeHandlers>
+
 
     <!-- 数据库环境 -->
     <environments default="development">
