@@ -9,7 +9,8 @@
         <result property="id" column="id" />
         <result property="userName" column="user_name" />
         <result property="password" column="password" />
-        <result property="sex" column="sex" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler" />
+        <!--<result property="sex" column="sex" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler" />-->
+        <result property="sex" column="sex" typeHandler="com.zft.mybatis.typeHandler.SexEnumTypeHandler" />
         <result property="mobile" column="mobile" />
         <result property="tel" column="tel" />
         <result property="email" column="email" />

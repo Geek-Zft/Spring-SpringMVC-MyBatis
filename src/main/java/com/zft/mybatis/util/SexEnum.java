@@ -40,7 +40,7 @@ public enum SexEnum implements EnumValue{
     }
 
 
-    public SexEnum getSexByIndex(int index) {
+    public static SexEnum getSexByIndex(int index) {
         for (SexEnum e : SexEnum.values()) {
             if(e.getIndex() == index) {
                 return e;
