@@ -29,7 +29,7 @@
     <typeHandlers>
         <!--<typeHandler jdbcType="VARCHAR" javaType="string" handler="com.zft.mybatis.typeHandler.MyTypeHandler" />-->
         <!--扫描方式配置 通过注解指定javaType和jdbcType-->
-        <package name="com.zft.mybatis.typeHandler" />
+        <!--<package name="com.zft.mybatis.typeHandler" />-->
     </typeHandlers>
 
 
@@ -49,6 +49,7 @@
     <!-- 映射文件 -->
     <mappers>
         <mapper resource="./mapper/RoleMapper.xml"/>
+        <mapper resource="./mapper/UserMapper.xml"/>
     </mappers>
 
 </configuration>    
