@@ -32,6 +32,11 @@
         <!--<package name="com.zft.mybatis.typeHandler" />-->
     </typeHandlers>
 
+    <!--配置自定义对象工厂-->
+    <objectFactory type="com.zft.mybatis.MyObjectFactory" >
+        <property name="proper1" value="value1" />
+    </objectFactory>
+
 
     <!-- 数据库环境 -->
     <environments default="development">
