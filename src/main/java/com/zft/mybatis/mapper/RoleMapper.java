@@ -3,6 +3,7 @@ package com.zft.mybatis.mapper;
 import com.zft.mybatis.vo.Role;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Description: 映射器接口
@@ -26,6 +27,8 @@ public interface RoleMapper {
     List<Role> findRoles(String roleName);
 
     List<Role> findRoles2(String note);
+
+    List<Role> findRolesByMap(Map<String, Object> param);
 
 
 }

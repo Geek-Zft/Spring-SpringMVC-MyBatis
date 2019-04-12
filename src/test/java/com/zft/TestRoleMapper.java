@@ -9,7 +9,9 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.BeforeClass;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TestRoleMapper {
 
@@ -76,6 +78,25 @@ public class TestRoleMapper {
             RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
             List<Role> list = roleMapper.getList("zft");
             logger.info(JSON.toJSONString(list));
+        }finally {
+            if(sqlSession != null) {
+                sqlSession.close();
+            }
+        }
+    }
+
+
+    @Test
+    public void testFindRolesByMap() {
+        SqlSession sqlSession = null;
+        try {
+            sqlSession = SqlSessionFactoryUtils.openSqlSession();
+            RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+            Map<String, Object> paramMap = new HashMap<>();
+            paramMap.put("roleName", "zft");
+            paramMap.put("note", "test");
+            List<Role> result = roleMapper.findRolesByMap(paramMap);
+            logger.info(JSON.toJSONString(result));
         }finally {
             if(sqlSession != null) {
                 sqlSession.close();

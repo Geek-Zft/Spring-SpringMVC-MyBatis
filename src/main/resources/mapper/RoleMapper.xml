@@ -58,4 +58,13 @@
 
     </select>
 
+    <select id="findRolesByMap" parameterType="map" resultType="role">
+        select id,
+            role_name as roleName,
+            note
+        from t_role
+        where role_name like concat('%', #{roleName}, '%')
+        and note like concat('%', #{note}, '%')
+    </select>
+
 </mapper>    
