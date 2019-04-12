@@ -104,4 +104,20 @@ public class TestRoleMapper {
         }
     }
 
+
+    @Test
+    public void testFindRolesByAnnotation() {
+        SqlSession sqlSession = null;
+        try {
+            sqlSession = SqlSessionFactoryUtils.openSqlSession();
+            RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+            List<Role> result = roleMapper.findRolesByAnnotation("zft", "test");
+            logger.info(JSON.toJSONString(result));
+        }finally {
+            if(sqlSession != null) {
+                sqlSession.close();
+            }
+        }
+    }
+
 }
