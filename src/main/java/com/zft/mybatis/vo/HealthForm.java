@@ -1,5 +1,7 @@
 package com.zft.mybatis.vo;
 
+import org.apache.ibatis.type.Alias;
+
 /**
  * Description: 体检表父类
  * @author  fengtan.zhang
@@ -7,6 +9,7 @@ package com.zft.mybatis.vo;
  * @email   fengtan_zhang@sina.com
  * @version 1.0
  */
+@Alias("healthForm")
 public abstract class HealthForm {
 
     private Long id;

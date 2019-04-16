@@ -1,6 +1,7 @@
 package com.zft.mybatis.vo;
 
 import com.zft.mybatis.util.SexEnum;
+import org.apache.ibatis.type.Alias;
 
 import java.util.Date;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  * @email   fengtan_zhang@sina.com
  * @version 1.0
  */
+@Alias("employee")
 public class Employee {
 
     private Long id;

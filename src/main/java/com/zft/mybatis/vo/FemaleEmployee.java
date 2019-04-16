@@ -1,4 +1,7 @@
 package com.zft.mybatis.vo;
+
+import org.apache.ibatis.type.Alias;
+
 /**
  * Description: 女雇员
  * @author  fengtan.zhang
@@ -6,6 +9,7 @@ package com.zft.mybatis.vo;
  * @email   fengtan_zhang@sina.com
  * @version 1.0
  */
+@Alias("femaleEmployee")
 public class FemaleEmployee extends Employee {
 
     private FemaleHealthForm femaleHealthForm = null;
