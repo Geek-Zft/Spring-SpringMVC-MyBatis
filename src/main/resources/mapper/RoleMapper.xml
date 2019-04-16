@@ -21,7 +21,8 @@
         where id = #{id}
     </select>
 
-    <insert id="insertRole" parameterType="role">
+    <insert id="insertRole" parameterType="role"
+        useGeneratedKeys="true" keyProperty="id">
         insert into t_role(role_name,note) values (#{roleName}, #{note})
     </insert>
 
