@@ -13,9 +13,15 @@
     </resultMap>
 
     <!-- sql 元素-->
+    <!--<sql id="roleCols" >-->
+        <!--id,role_name as roleName,note-->
+    <!--</sql>-->
+
+
     <sql id="roleCols" >
-        id,role_name as roleName,note
+        ${alias}.id,${alias}.role_name as roleName,${alias}.note
     </sql>
+
 
 
 
@@ -28,8 +34,11 @@
 
     <select id="getRole" parameterType="long" resultType="role">
         select
-            <include refid="roleCols" />
-        from t_role
+            <!--<include refid="roleCols" />-->
+            <include refid="roleCols">
+                <property name="alias" value="t" />
+            </include>
+        from t_role t
         where id = #{id}
     </select>
 
