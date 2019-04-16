@@ -4,6 +4,7 @@ import com.zft.mybatis.vo.PageParams;
 import com.zft.mybatis.vo.Role;
 import com.zft.mybatis.vo.RoleParams;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
 import java.util.Map;
@@ -38,6 +39,8 @@ public interface RoleMapper {
     List<Role> findRolesByBean(RoleParams roleParams);
 
     List<Role> findByMix(@Param("params") RoleParams roleParams, @Param("page") PageParams pageParams);
+
+    List<Role> findByRowBounds(@Param("roleName") String roleName, @Param("note") String note, RowBounds rowBounds);
 
 
 }

@@ -6,6 +6,7 @@ import com.zft.mybatis.util.SqlSessionFactoryUtils;
 import com.zft.mybatis.vo.PageParams;
 import com.zft.mybatis.vo.Role;
 import com.zft.mybatis.vo.RoleParams;
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -156,6 +157,27 @@ public class TestRoleMapper {
             }finally {
                 if(sqlSession != null) {
                     sqlSession.close();
+                }
+            }
+        }
+    }
+
+
+    @Test
+    public void testFindByRowBounds() {
+        {
+            {
+                SqlSession sqlSession = null;
+                try {
+                    sqlSession = SqlSessionFactoryUtils.openSqlSession();
+                    RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+                    RowBounds rowBounds = new RowBounds(0, 1);
+                    List<Role> result = roleMapper.findByRowBounds("zft", "test", rowBounds);
+                    logger.info(JSON.toJSONString(result));
+                }finally {
+                    if(sqlSession != null) {
+                        sqlSession.close();
+                    }
                 }
             }
         }

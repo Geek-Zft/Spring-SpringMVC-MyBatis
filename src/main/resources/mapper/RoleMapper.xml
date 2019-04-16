@@ -6,7 +6,8 @@
 
 
     <resultMap id="roleMapper" type="role">
-        <result property="id" column="id" />
+        <!--<result property="id" column="id" />-->
+        <id property="id" column="id" />
         <result property="roleName" column="role_name" jdbcType="VARCHAR" javaType="string" />
         <result  property="note" column="note" typeHandler="com.zft.mybatis.typeHandler.MyTypeHandler" />
     </resultMap>
@@ -91,6 +92,16 @@
         from t_role
         where role_name like concat('%',#{params.roleName},'%')
         limit #{page.start}, #{page.limit}
+    </select>
+
+    <!-- 分页参数RowBounds-->
+    <select id="findByRowBounds" resultType="role" >
+        select id,
+            role_name as roleName,
+            note
+        from t_role
+        where role_name like concat('%', #{roleName}, '%')
+        and note like concat('%', #{note}, '%')
     </select>
 
 </mapper>    
