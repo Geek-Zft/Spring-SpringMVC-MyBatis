@@ -3,6 +3,7 @@ package com.zft;
 import com.alibaba.fastjson.JSON;
 import com.zft.mybatis.mapper.RoleMapper;
 import com.zft.mybatis.util.SqlSessionFactoryUtils;
+import com.zft.mybatis.vo.PageParams;
 import com.zft.mybatis.vo.Role;
 import com.zft.mybatis.vo.RoleParams;
 import org.apache.ibatis.session.SqlSession;
@@ -134,6 +135,28 @@ public class TestRoleMapper {
         }finally {
             if(sqlSession != null) {
                 sqlSession.close();
+            }
+        }
+    }
+
+    @Test
+    public void testFindByMix() {
+        {
+            SqlSession sqlSession = null;
+            try {
+                sqlSession = SqlSessionFactoryUtils.openSqlSession();
+                RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+                RoleParams params = new RoleParams();
+                params.setRoleName("zft");
+                PageParams pageParams = new PageParams();
+                pageParams.setStart(0);
+                pageParams.setLimit(1);
+                List<Role> result = roleMapper.findByMix(params, pageParams);
+                logger.info(JSON.toJSONString(result));
+            }finally {
+                if(sqlSession != null) {
+                    sqlSession.close();
+                }
             }
         }
     }
