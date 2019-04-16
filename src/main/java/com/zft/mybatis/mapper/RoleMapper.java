@@ -1,6 +1,7 @@
 package com.zft.mybatis.mapper;
 
 import com.zft.mybatis.vo.Role;
+import com.zft.mybatis.vo.RoleParams;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -32,6 +33,8 @@ public interface RoleMapper {
     List<Role> findRolesByMap(Map<String, Object> param);
 
     List<Role> findRolesByAnnotation(@Param("roleName") String roleName, @Param("note") String note);
+
+    List<Role> findRolesByBean(RoleParams roleParams);
 
 
 }
