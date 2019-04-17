@@ -102,11 +102,12 @@
     </select>
 
     <select id="findRolesByBean" resultType="role" parameterType="roleParams">
+        <bind name="pattern" value="'%' + roleName + '%'" />
         select id,
             role_name as roleName,
             note
         from t_role
-        where role_name like concat('%',#{roleName},'%')
+        where role_name like #{pattern}
     </select>
 
     <select id="findByMix" resultType="role" >
