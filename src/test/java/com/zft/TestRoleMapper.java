@@ -145,22 +145,21 @@ public class TestRoleMapper {
 
     @Test
     public void testFindByMix() {
-        {
-            SqlSession sqlSession = null;
-            try {
-                sqlSession = SqlSessionFactoryUtils.openSqlSession();
-                RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
-                RoleParams params = new RoleParams();
-                params.setRoleName("zft");
-                PageParams pageParams = new PageParams();
-                pageParams.setStart(0);
-                pageParams.setLimit(1);
-                List<Role> result = roleMapper.findByMix(params, pageParams);
-                logger.info(JSON.toJSONString(result));
-            }finally {
-                if(sqlSession != null) {
-                    sqlSession.close();
-                }
+
+        SqlSession sqlSession = null;
+        try {
+            sqlSession = SqlSessionFactoryUtils.openSqlSession();
+            RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+            RoleParams params = new RoleParams();
+            params.setRoleName("zft");
+            PageParams pageParams = new PageParams();
+            pageParams.setStart(0);
+            pageParams.setLimit(1);
+            List<Role> result = roleMapper.findByMix(params, pageParams);
+            logger.info(JSON.toJSONString(result));
+        }finally {
+            if(sqlSession != null) {
+                sqlSession.close();
             }
         }
     }
@@ -168,20 +167,43 @@ public class TestRoleMapper {
 
     @Test
     public void testFindByRowBounds() {
-        {
-            {
-                SqlSession sqlSession = null;
-                try {
-                    sqlSession = SqlSessionFactoryUtils.openSqlSession();
-                    RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
-                    RowBounds rowBounds = new RowBounds(0, 1);
-                    List<Role> result = roleMapper.findByRowBounds("zft", "test", rowBounds);
-                    logger.info(JSON.toJSONString(result));
-                }finally {
-                    if(sqlSession != null) {
-                        sqlSession.close();
-                    }
-                }
+        SqlSession sqlSession = null;
+        try {
+            sqlSession = SqlSessionFactoryUtils.openSqlSession();
+            RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+            RowBounds rowBounds = new RowBounds(0, 1);
+            List<Role> result = roleMapper.findByRowBounds("zft", "test", rowBounds);
+            logger.info(JSON.toJSONString(result));
+        }finally {
+            if(sqlSession != null) {
+                sqlSession.close();
+            }
+        }
+    }
+
+    @Test
+    public void testL2Cache() {
+        SqlSession sqlSession = null;
+        SqlSession sqlSession2 = null;
+        try {
+            sqlSession = SqlSessionFactoryUtils.openSqlSession();
+            sqlSession2 = SqlSessionFactoryUtils.openSqlSession();
+            RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+            Role role = roleMapper.getRole(1L);
+            //此处不commit，不会有缓存出现
+            sqlSession.commit();
+            logger.info(JSON.toJSONString(role));
+            logger.info("不同SqlSession再获取一次POJO.........");
+            RoleMapper mapper = sqlSession2.getMapper(RoleMapper.class);
+            Role role1 = mapper.getRole(1L);
+            sqlSession2.commit();
+            logger.info(JSON.toJSONString(role1));
+        }finally {
+            if(sqlSession != null) {
+                sqlSession.close();
+            }
+            if(sqlSession2 != null) {
+                sqlSession2.close();
             }
         }
     }
