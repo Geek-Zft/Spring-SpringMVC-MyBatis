@@ -56,6 +56,12 @@
     <mappers>
         <mapper resource="./mapper/RoleMapper.xml"/>
         <mapper resource="./mapper/UserMapper.xml"/>
+        <mapper resource="./mapper/EmployeeMapper.xml"/>
+        <mapper resource="./mapper/EmployeeTaskMapper.xml"/>
+        <mapper resource="./mapper/FemaleHealthFormMapper.xml"/>
+        <mapper resource="./mapper/MaleHealthFormMapper.xml"/>
+        <mapper resource="./mapper/TaskMapper.xml"/>
+        <mapper resource="./mapper/WorkCardMapper.xml"/>
     </mappers>
 
 </configuration>    
