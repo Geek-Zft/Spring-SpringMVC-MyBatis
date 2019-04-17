@@ -35,9 +35,10 @@ public class TestRoleMapper {
             RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
             Role role = roleMapper.getRole(1L);
             //查看运行日志，发现只调用了一次sql，于是得出，MyBatis默认开启一级缓存(使用的同一个SqlSession,一级缓存是在SqlSession上的缓存)
+            logger.info(JSON.toJSONString(role)) ;
             logger.info("再获取一次role......");
             Role role1 = roleMapper.getRole(1L);
-            logger.info(JSON.toJSONString(role));
+            logger.info(JSON.toJSONString(role1));
         }finally {
             if(sqlSession != null) {
                 sqlSession.close();

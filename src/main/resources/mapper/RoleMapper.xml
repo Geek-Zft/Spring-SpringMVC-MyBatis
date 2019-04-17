@@ -34,7 +34,7 @@
         <!--where id = #{id}-->
     <!--</select>-->
 
-    <select id="getRole" parameterType="long" resultType="role">
+    <select id="getRole" parameterType="long" resultType="role" flushCache="false" useCache="true">
         select
             <!--<include refid="roleCols" />-->
             <include refid="roleCols">
