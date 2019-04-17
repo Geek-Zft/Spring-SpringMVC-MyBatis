@@ -225,4 +225,24 @@ public class TestRoleMapper {
     }
 
 
+    @Test
+    public void testTestSet() {
+        SqlSession sqlSession = null;
+        try {
+            sqlSession = SqlSessionFactoryUtils.openSqlSession();
+            RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+            Role role1 = new Role();
+            role1.setId(1L);
+            role1.setRoleName("ttt");
+            role1.setNote(null);
+            int i = roleMapper.testSet(role1);
+            logger.info(JSON.toJSONString(i));
+        } finally {
+            if (sqlSession != null) {
+                sqlSession.close();
+            }
+
+        }
+    }
+
 }

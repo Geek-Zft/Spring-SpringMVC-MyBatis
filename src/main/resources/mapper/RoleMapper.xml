@@ -186,4 +186,18 @@
         </choose>
     </select> -->
 
+    <!--set元素的使用  避免全部字段更新的问题-->
+    <update id="testSet" parameterType="role">
+        update t_role
+        <set>
+            <if test="roleName != null and roleName != ''">
+                role_name = #{roleName},
+            </if>
+            <if test="note != null and note != ''">
+                note = #{note}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
 </mapper>    

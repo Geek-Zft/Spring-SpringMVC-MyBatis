@@ -44,5 +44,7 @@ public interface RoleMapper {
 
     Role testIf(@Param("id") Long id);
 
+    int testSet(Role role);
+
 
 }
