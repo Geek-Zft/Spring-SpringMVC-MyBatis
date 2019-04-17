@@ -139,4 +139,20 @@
         </if>
     </select>
 
+
+    <!--多条件查询使用choose when otherwise, 模板如下-->
+   <!-- <select id="">
+        <choose>
+            <when test="">
+
+            </when>
+            <when test="">
+
+            </when>
+            <otherwise>
+
+            </otherwise>
+        </choose>
+    </select> -->
+
 </mapper>    
