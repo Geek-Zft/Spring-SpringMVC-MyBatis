@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.BeforeClass;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -242,6 +243,22 @@ public class TestRoleMapper {
                 sqlSession.close();
             }
 
+        }
+    }
+
+    @Test
+    public void testTestForeach() {
+        SqlSession sqlSession = null;
+        try {
+            sqlSession = SqlSessionFactoryUtils.openSqlSession();
+            RoleMapper mapper = sqlSession.getMapper(RoleMapper.class);
+            List<Long> ids = new ArrayList<>();
+            ids.add(1L);
+            ids.add(2L);
+            List<Role> result = mapper.testForeach(ids);
+            logger.info(JSON.toJSONString(result));
+        }catch (Exception e) {
+            //skip
         }
     }
 

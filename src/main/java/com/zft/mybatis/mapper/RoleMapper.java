@@ -46,5 +46,7 @@ public interface RoleMapper {
 
     int testSet(Role role);
 
+    List<Role> testForeach(@Param("ids") List<Long> ids);
+
 
 }

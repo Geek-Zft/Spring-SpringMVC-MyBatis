@@ -200,4 +200,12 @@
         where id = #{id}
     </update>
 
+
+    <select id="testForeach" resultType="role">
+        select * from t_role where id in
+        <foreach collection="ids" item="id" index="index" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
 </mapper>    
