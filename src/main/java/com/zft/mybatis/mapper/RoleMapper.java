@@ -42,5 +42,7 @@ public interface RoleMapper {
 
     List<Role> findByRowBounds(@Param("roleName") String roleName, @Param("note") String note, RowBounds rowBounds);
 
+    Role testIf(@Param("id") Long id);
+
 
 }
