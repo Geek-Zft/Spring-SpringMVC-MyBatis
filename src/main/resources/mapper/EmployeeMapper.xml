@@ -19,6 +19,10 @@
         <association property="workCard" column="id" select="com.zft.mybatis.mapper.WorkCardMapper.getWorkCardByEmpId" />
         <!--一对多-->
         <collection property="employeeTaskList" column="id" select="com.zft.mybatis.mapper.EmployeeTaskMapper.getEmployeeTaskByEmpId" />
+
+        <!--fetchType: eager获得当前POJO后立即加载对应的数据，lazy延时加载  -->
+        <!--<collection property="employeeTaskList" column="id" select="com.zft.mybatis.mapper.EmployeeTaskMapper.getEmployeeTaskByEmpId" fetchType="eager"/>-->
+
         <!--鉴别器 column代表使用哪个字段进行鉴别-->
         <discriminator javaType="long" column="sex">
             <case value="1" resultMap="maleHealthFormMapper" />

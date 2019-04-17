@@ -15,6 +15,12 @@
     <!--使用属性文件-->
     <properties resource="jdbc.properties" />
 
+    <!--mybatis settings配置-->
+    <settings>
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+    </settings>
+
 
     <!-- 别名,也可以用注解-->
     <typeAliases>
@@ -33,7 +39,7 @@
     </typeHandlers>
 
     <!--配置自定义对象工厂-->
-    <objectFactory type="com.zft.mybatis.MyObjectFactory" >
+       <objectFactory type="com.zft.mybatis.MyObjectFactory" >
         <property name="proper1" value="value1" />
     </objectFactory>
 

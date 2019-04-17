@@ -2,10 +2,8 @@ package com.zft;
 
 import com.alibaba.fastjson.JSON;
 import com.zft.mybatis.mapper.EmployeeMapper;
-import com.zft.mybatis.mapper.RoleMapper;
 import com.zft.mybatis.util.SqlSessionFactoryUtils;
 import com.zft.mybatis.vo.Employee;
-import com.zft.mybatis.vo.Role;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
@@ -38,7 +36,7 @@ public class TestAssociation {
             sqlSession = SqlSessionFactoryUtils.openSqlSession();
             EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
             Employee employee = mapper.getEmployee(1L);
-            logger.info(JSON.toJSONString(employee));
+            logger.info(JSON.toJSONString(employee.getBirthday()));
         }finally {
             if(sqlSession != null) {
                 sqlSession.close();
