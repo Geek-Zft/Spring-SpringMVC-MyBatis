@@ -128,16 +128,47 @@
         and note like concat('%', #{note}, '%')
     </select>
 
+    <!--<select id="testIf" parameterType="long" resultType="role">-->
+        <!--select id,-->
+            <!--role_name as roleName,-->
+            <!--note-->
+        <!--from t_role-->
+        <!--where 1 = 1-->
+        <!--<if test="id != null and id != ''">-->
+            <!--and id = #{id}-->
+        <!--</if>-->
+    <!--</select>-->
+
+    <!--使用where元素-->
+    <!--<select id="testIf" parameterType="long" resultType="role">
+        select id,
+        role_name as roleName,
+        note
+        from t_role
+         where会自动将其后第一个条件的and或者or忽略
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+        </where>
+    </select> -->
+
+    <!--使用trim元素
+        prefix代表语句的前缀   prefixOverrides代表需要去掉哪种字符串
+    -->
     <select id="testIf" parameterType="long" resultType="role">
         select id,
-            role_name as roleName,
-            note
+        role_name as roleName,
+        note
         from t_role
-        where 1 = 1
-        <if test="id != null and id != ''">
+        <trim prefix="where" prefixOverrides="and">
+            <if test="id != null and id != ''">
             and id = #{id}
-        </if>
+            </if>
+        </trim>
     </select>
+
+
 
 
     <!--多条件查询使用choose when otherwise, 模板如下-->
