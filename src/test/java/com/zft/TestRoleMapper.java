@@ -259,6 +259,10 @@ public class TestRoleMapper {
             logger.info(JSON.toJSONString(result));
         }catch (Exception e) {
             //skip
+        }finally {
+            if(sqlSession != null) {
+                sqlSession.close();
+            }
         }
     }
 
